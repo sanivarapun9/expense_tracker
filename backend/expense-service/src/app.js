@@ -25,10 +25,6 @@ app.use(
   expenseRoutes
 );
 
-app.get("/health", (req, res) => {
-  res.send("Expense Service UP");
-});
-
 app.use(errorMiddleware);
 
 module.exports = app;
