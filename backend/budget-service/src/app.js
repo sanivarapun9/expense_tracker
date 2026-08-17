@@ -7,10 +7,11 @@ require("cors");
 const helmet =
 require("helmet");
 
-const expenseRoutes =
+const budgetRoutes =
 require("./routes/budgetRoutes");
-const errorMiddleware = require("../../shared/middleware/errorMiddleware");
 
+const errorMiddleware =
+require("../../shared/middleware/errorMiddleware");
 
 const app = express();
 
@@ -20,11 +21,22 @@ app.use(cors());
 
 app.use(helmet());
 
-app.use(
-  "/api/expenses",
-  expenseRoutes
+app.get(
+ "/health",
+ (req,res)=>{
+  res.send(
+   "Budget Service UP"
+  );
+ }
 );
 
-app.use(errorMiddleware);
+app.use(
+ "/api/budgets",
+ budgetRoutes
+);
+
+app.use(
+ errorMiddleware
+);
 
 module.exports = app;

@@ -11,22 +11,23 @@ const {
 } = require("./models");
 
 const PORT =
-process.env.PORT || 5002;
+process.env.PORT || 5003;
 
-(async () => {
+(async()=>{
 
-  await connectDB();
+ await connectDB();
 
-  await sequelize.sync({
-    alter: true
-  });
+ await sequelize.sync({
+   alter:true
+ });
 
-  app.listen(PORT, () => {
-
-    console.log(
-      `Expense Service Running On ${PORT}`
-    );
-
-  });
+ app.listen(
+  PORT,
+  ()=>{
+   console.log(
+    `Budget Service Running ${PORT}`
+   );
+  }
+ );
 
 })();
