@@ -61,10 +61,28 @@ const getExpenses = async (
   );
 };
 
+const getCategorySummary = async (userId) => {
+
+  return repository.getCategorySummary(
+    userId
+  );
+
+};
+
+const getTotalExpenses = async (userId) => {
+
+  return repository.getTotalExpenses(
+    userId
+  );
+
+};
+
 module.exports = {
   createExpense,
   getExpenseById,
   updateExpense,
   deleteExpense,
-  getExpenses
+  getExpenses,
+  getCategorySummary,
+  getTotalExpenses
 };

@@ -1,7 +1,7 @@
 // src/repositories/expenseRepository.js
 
 const { where } = require("sequelize");
-const { Expense } = require("../models");
+const { Expense,sequelize } = require("../models");
 
 const createExpense = async (data) => {
   return Expense.create(data);
@@ -38,10 +38,47 @@ return Expense.findAndCountAll({
 })
 }
 
+const getCategorySummary = async (userId) => {
+
+  return Expense.findAll({
+    attributes: [
+      "category",
+      [
+        sequelize.fn(
+          "SUM",
+          sequelize.col("amount")
+        ),
+        "spent"
+      ]
+    ],
+    where: {
+      userId
+    },
+    group: ["category"]
+  });
+
+};
+
+const getTotalExpenses = async (userId) => {
+
+  const total = await Expense.sum(
+    "amount",
+    {
+      where: {
+        userId
+      }
+    }
+  );
+
+  return total || 0;
+};
+
 module.exports = {
   createExpense,
   findById,
   updateExpense,
   deleteExpense,
-  getExpenses
+  getExpenses,
+  getCategorySummary,
+  getTotalExpenses
 };

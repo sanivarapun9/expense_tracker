@@ -23,6 +23,19 @@ router.get(
   expenseController.getExpenses
 );
 
+
+router.get(
+ "/summary",
+ authMiddleware,
+ expenseController.totalSummary
+);
+
+router.get(
+ "/category-summary",
+ authMiddleware,
+ expenseController.categorySummary
+);
+
 router.get(
   "/:id",
   authMiddleware,
@@ -40,5 +53,6 @@ router.delete(
   authMiddleware,
   expenseController.deleteExpense
 );
+
 
 module.exports = router;

@@ -23,6 +23,18 @@ router.get(
 );
 
 router.get(
+ "/alerts",
+ authMiddleware,
+ controller.getAlerts
+);
+
+router.get(
+ "/summary/dashboard",
+ authMiddleware,
+ controller.getDashboardSummary
+);
+
+router.get(
  "/:id",
  authMiddleware,
  controller.getBudgetById
@@ -39,5 +51,7 @@ router.delete(
  authMiddleware,
  controller.deleteBudget
 );
+
+
 
 module.exports = router;

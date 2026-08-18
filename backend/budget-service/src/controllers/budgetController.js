@@ -1,10 +1,9 @@
 // controllers/budgetController.js
 
-const service =
-require("../services/budgetService");
+const service = require("../services/budgetService");
+const dashboardService = require('../services/dashboardService')
 
-exports.createBudget =
-async (req,res,next)=>{
+exports.createBudget = async (req,res,next)=>{
 
 try{
 
@@ -29,8 +28,7 @@ try{
 }
 };
 
-exports.getBudgets =
-async (req,res,next)=>{
+exports.getBudgets = async (req,res,next)=>{
 
 try{
 
@@ -51,8 +49,7 @@ try{
 }
 };
 
-exports.getBudgetById =
-async (req,res,next)=>{
+exports.getBudgetById = async (req,res,next)=>{
 
 try{
 
@@ -73,8 +70,7 @@ try{
 }
 };
 
-exports.updateBudget =
-async (req,res,next)=>{
+exports.updateBudget = async (req,res,next)=>{
 
 try{
 
@@ -96,8 +92,7 @@ try{
 }
 };
 
-exports.deleteBudget =
-async (req,res,next)=>{
+exports.deleteBudget = async (req,res,next)=>{
 
 try{
 
@@ -115,4 +110,50 @@ try{
  next(error);
 
 }
+};
+
+exports.getAlerts = async (req,res,next)=>{
+
+ try{
+
+  const result =
+  await dashboardService.getBudgetAlerts(
+    req.user.userId,
+    req.headers.authorization
+  );
+
+  res.json({
+   success:true,
+   data:result
+  });
+
+ }catch(error){
+
+  next(error);
+
+ }
+
+};
+
+exports.getDashboardSummary = async (req,res,next)=>{
+
+ try{
+
+  const result =
+  await dashboardService.getDashboardSummary(
+    req.user.userId,
+    req.headers.authorization
+  );
+
+  res.json({
+   success:true,
+   data:result
+  });
+
+ }catch(error){
+
+  next(error);
+
+ }
+
 };

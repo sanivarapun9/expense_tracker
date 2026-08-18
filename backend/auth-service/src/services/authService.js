@@ -66,7 +66,23 @@ const login = async (
     };
 };
 
+
+const getCurrentUser = async (userId) => {
+
+    const user =
+        await userRepository.getUserById(
+            userId
+        );
+
+    if (!user) {
+        throw new Error("User not found");
+    }
+
+    return user;
+};
+
 module.exports = {
     register,
-    login
+    login,
+    getCurrentUser
 };
