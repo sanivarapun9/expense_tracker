@@ -31,7 +31,7 @@ app.get(
 );
 
 app.use(
- "/api/budgets",
+ "/",
  budgetRoutes
 );
 

@@ -9,7 +9,7 @@ const getBudgetAlerts = async (userId, token) => {
 
     const expenseResponse =
         await axios.get(
-            "http://localhost:5002/api/expenses/category-summary",
+            "http://localhost:5002/category-summary",
             {
                 headers: {
                     Authorization: token
@@ -92,7 +92,7 @@ const getDashboardSummary = async (userId, token) => {
 
     const expenseResponse =
         await axios.get(
-            "http://localhost:5002/api/expenses/summary",
+            "http://localhost:5002/summary",
             {
                 headers: {
                     Authorization: token
