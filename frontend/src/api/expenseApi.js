@@ -11,3 +11,6 @@ export const deleteExpense = (id) =>
 
 export const updateExpense = (id,data) =>
     api.put(`/api/expenses/${id}`,data);
+
+export const getCategorySummary = () =>
+  api.get("/api/expenses/category-summary");

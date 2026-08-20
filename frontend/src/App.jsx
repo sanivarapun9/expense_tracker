@@ -13,7 +13,7 @@ import PrivateRoute
   from "./routes/PrivateRoute";
 
 import MainLayout
-  from "./layouts/MainLayout";
+  from "../src/components/layout/MainLayout";
 
 function App() {
 
